@@ -9,10 +9,9 @@
 import Foundation
 import CoreData
 import SwiftUI
-import CloudKit
 
 class DataController: ObservableObject {
-    let container: NSPersistentCloudKitContainer
+    let container: NSPersistentContainer
     
     init(inMemory: Bool = false) {
         // Since we have a local database, and a cloud-synced database, the following set these up.
@@ -26,7 +25,7 @@ class DataController: ObservableObject {
             return storeDirectory.appendingPathComponent(file)
         }
         
-        container = NSPersistentCloudKitContainer(name: "Main")
+        container = NSPersistentContainer(name: "Main")
         if inMemory {
             container.persistentStoreDescriptions.first?.url = URL(fileURLWithPath: "/dev/null")
         }
@@ -34,18 +33,8 @@ class DataController: ObservableObject {
         let localStoreDescription = NSPersistentStoreDescription(url: getLocation ("local.sqlite"))
         localStoreDescription.configuration = "Local"
 
-        let cloudStoreDescription = NSPersistentStoreDescription(url: getLocation ("cloud.sqlite"))
-        
-        let cloudOptions = NSPersistentCloudKitContainerOptions(containerIdentifier: "iCloud.org.tirania.SwiftTermKeys")
-        cloudOptions.databaseScope = .private
-        cloudStoreDescription.configuration = "Cloud"
-        cloudStoreDescription.cloudKitContainerOptions = cloudOptions
-        cloudStoreDescription.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
-        cloudStoreDescription.setOption(true as NSNumber, forKey: NSPersistentStoreRemoteChangeNotificationPostOptionKey)
-
         // Update the container's list of store descriptions
         container.persistentStoreDescriptions = [
-            cloudStoreDescription,
             localStoreDescription
         ]
         
