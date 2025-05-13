@@ -33,9 +33,13 @@ class DataController: ObservableObject {
         let localStoreDescription = NSPersistentStoreDescription(url: getLocation ("local.sqlite"))
         localStoreDescription.configuration = "Local"
 
+        let cloudStoreDescription = NSPersistentStoreDescription(url: getLocation("cloud.sqlite"))
+        cloudStoreDescription.configuration = "Cloud"
+
         // Update the container's list of store descriptions
         container.persistentStoreDescriptions = [
-            localStoreDescription
+            localStoreDescription,
+            cloudStoreDescription
         ]
         
         container.loadPersistentStores { storeDescription, error in

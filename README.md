@@ -1,23 +1,23 @@
 # SwiftTermApp
 
-SwiftTermApp is a terminal emulator and SSH client application for iOS
-using the [SwiftTerm](https://github.com/migueldeicaza/SwiftTerm) engine and written in SwiftUI. It is the open 
+SwiftTermApp is a full-featured terminal emulator and SSH client application for iOS
+using the [SwiftTerm](https://github.com/migueldeicaza/SwiftTerm) engine and built entirely with SwiftUI. It is the open 
 core of [La Terminal](https://apps.apple.com/us/app/la-terminal-ssh-client/id1629902861), available in the 
 App Store for iPhone and iPad.
 
-This repository is not actively updated, but you can still use it as sample code, but I wont like be fixing
-or updating it.
+## Key Features
 
-
-Some of the features:
-* Comprehensive terminal emulator, based on SwiftTerm - which is both very comprehensive in terms of emulation, 
-  and has extensive support for international terminals, both for generated output as well as the support for
-  iOS input methods for dictation and international input.
-* Supports for keys stored on the secure enclave, so your private key can never be found in plain text.
-* Themable user interface:
-  * Using the user interface provided or
-  * Programatically, through the terminal support for configuring colors dynamically.
-* Metal shaders for some cool live effects
+* **Modern iOS Terminal**: A comprehensive terminal emulator based on SwiftTerm with full support for standard terminal features
+* **Complete SSH Client**: Connect to SSH servers with username/password or key-based authentication
+* **Persistent Connections**: SSH hosts are saved between app restarts using Core Data
+* **iCloud Sync Support**: Host configurations can be synchronized across your devices via iCloud
+* **SwiftUI Interface**: Beautiful, modern interface built entirely with SwiftUI
+* **Secure Key Management**: Support for keys stored in the secure enclave, ensuring your private keys never exist in plain text
+* **Flexible Theming**:
+  * Customizable user interface through settings
+  * Programmatic terminal color configuration
+  * Support for standard and custom color schemes
+* **Visual Effects**: Metal shaders for cool live terminal backgrounds
 
 ![Screenshot](https://user-images.githubusercontent.com/36863/81033655-645d5980-8e62-11ea-91c5-1d8b1931c7ce.png)
 
